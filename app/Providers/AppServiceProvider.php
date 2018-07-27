@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //Migration Default String Length to 191:: MySQL older than the 5.7.7
         Schema::defaultStringLength(191);
+
+        /* Check if password is current password */
+        Validator::extend('is_current_password', function ($attribute, $value, $parameters, $validator) {
+            return Hash::check($value, auth()->user()->password);
+        });
     }
 
     /**
