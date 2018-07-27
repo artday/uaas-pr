@@ -1,4 +1,4 @@
-#User Account Activation System with Permissions and Roles. (uaas-pr)
+<h1>User Account Activation System with Permissions and Roles (uaas-pr)</h1>
 
 `What we do:` <br><br>
 **1)	Laravel account activation via email** <br>
