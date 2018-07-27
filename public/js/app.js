@@ -1008,8 +1008,6 @@ window._ = __webpack_require__(12);
 
 // try {
 //     window.$ = window.jQuery = require('jquery');
-//
-//     require('bootstrap-sass');
 // } catch (e) {}
 
 /**
