@@ -1,0 +1,11 @@
+
+form{
+  .form-error, .form-error .text-muted, .form-error label {
+    color: $danger!important;
+    font-weight: bold;
+  }
+  .form-error input, .form-error input, input:invalid{
+    border-color: $danger!important;
+    color: $danger!important;
+  }
+}

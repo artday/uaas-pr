@@ -10471,3 +10471,17 @@ a.text-dark:focus {
   }
 }
 
+form .form-error,
+form .form-error .text-muted,
+form .form-error label {
+  color: #dc3545 !important;
+  font-weight: bold;
+}
+
+form .form-error input,
+form .form-error input,
+form input:invalid {
+  border-color: #dc3545 !important;
+  color: #dc3545 !important;
+}
+
