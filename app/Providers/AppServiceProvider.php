@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\ConfirmationToken;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
@@ -23,6 +25,8 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('is_current_password', function ($attribute, $value, $parameters, $validator) {
             return Hash::check($value, auth()->user()->password);
         });
+
+        Route::model('confirmation_token', ConfirmationToken::class);
     }
 
     /**
