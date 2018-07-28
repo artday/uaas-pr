@@ -17,7 +17,7 @@ class ActivationController extends Controller
         $token->user->update([ 'activated' => true ]);
         $token->delete();
         Auth::loginUsingId($token->user->id);
-        return redirect()->intended($this->redirectPath())->withSuccess('You are now signed in.');
+        return redirect()->intended($this->redirectPath())->withSuccess('Activated! You\'re now signed in.');
     }
 
 }
