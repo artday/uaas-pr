@@ -14,7 +14,7 @@ class AddActivatedToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->boolean('activated')->default(false);
         });
     }
 
@@ -26,7 +26,7 @@ class AddActivatedToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->drop('activated');
         });
     }
 }
