@@ -26,6 +26,7 @@ class PasswordController extends Controller
             'password' => bcrypt($request->password)
         ]);
         event(new PasswordUpdate($request->user()));
-        return redirect()->route('account.index');
+        return redirect()->route('account.index')
+            ->withSuccess('Password updated.');
     }
 }
