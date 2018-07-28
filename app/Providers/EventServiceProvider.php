@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Account\PasswordUpdate' => [
             'App\Listeners\Account\SendPasswordUpdateEmail',
         ],
+        'App\Events\Auth\UserSignedUp' => [
+            'App\Listeners\Auth\SendActivationEmail',
+        ],
     ];
 
     /**

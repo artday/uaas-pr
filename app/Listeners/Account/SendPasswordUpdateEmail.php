@@ -5,8 +5,9 @@ namespace App\Listeners\Account;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Account\PasswordUpdated;
 use App\Events\Account\PasswordUpdate;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SendPasswordUpdateEmail
+class SendPasswordUpdateEmail implements ShouldQueue
 {
 
     /**
