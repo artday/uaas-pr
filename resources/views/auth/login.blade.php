@@ -2,6 +2,11 @@
 
 @section('content')
 <div class="container">
+    @if(Session::exists('request_activation_link'))
+        <a class="btn btn-link" href="{{ route('activation.resend') }}">
+            Resend activation email
+        </a>
+    @endif
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -58,6 +63,7 @@
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>
+
                             </div>
                         </div>
                     </form>

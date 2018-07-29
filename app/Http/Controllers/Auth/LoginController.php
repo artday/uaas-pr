@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\Auth\ToggleActivationLink;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -49,6 +50,7 @@ class LoginController extends Controller
     {
         if($user->hasNotActivated()){
             $this->guard()->logout();
+            event(new ToggleActivationLink($user));
             return back()->withError('Your account is not active.');
         }
     }

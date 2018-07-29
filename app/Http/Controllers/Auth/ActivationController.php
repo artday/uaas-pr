@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\ConfirmationToken;
-use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Http\Request;
+use App\Models\ConfirmationToken;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Events\Auth\ToggleActivationLink;
+use Illuminate\Foundation\Auth\RedirectsUsers;
 
 class ActivationController extends Controller
 {
@@ -17,6 +18,7 @@ class ActivationController extends Controller
         $token->user->update([ 'activated' => true ]);
         $token->delete();
         Auth::loginUsingId($token->user->id);
+        event(new ToggleActivationLink(Auth::user()));
         return redirect()->intended($this->redirectPath())->withSuccess('Activated! You\'re now signed in.');
     }
 

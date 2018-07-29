@@ -18,6 +18,14 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\Auth\UserSignedUp' => [
             'App\Listeners\Auth\SendActivationEmail',
+            'App\Listeners\Auth\ActivationLink',
+        ],
+        'App\Events\Auth\UserRequestedActivationEmail' => [
+            'App\Listeners\Auth\SendActivationEmail',
+            'App\Listeners\Auth\ActivationLink',
+        ],
+        'App\Events\Auth\ToggleActivationLink' => [
+            'App\Listeners\Auth\ActivationLink',
         ],
     ];
 
@@ -29,7 +37,5 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-
-        //
     }
 }
