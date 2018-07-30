@@ -36,4 +36,21 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    /**
+     * Get the response for a successful password reset.
+     *
+     * @param  string  $response
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function sendResetResponse($response)
+    {
+        if($this->guard()->user()->hasNotActivated()){
+            $this->guard()->logout();
+            return redirect()->route('login')->withError('Your account is not active. You cant\'t reset password');
+        }
+
+        return redirect($this->redirectPath())
+            ->with('status', trans($response));
+    }
 }
