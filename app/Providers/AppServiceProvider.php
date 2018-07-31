@@ -22,18 +22,18 @@ class AppServiceProvider extends ServiceProvider
         //Migration Default String Length to 191:: MySQL older than the 5.7.7
         Schema::defaultStringLength(191);
 
-        /* Check if password is current password */
+        Route::model('confirmation_token', ConfirmationToken::class);
+
+        /* Rule: Check if password is current password */
         Validator::extend('is_current_password', function ($attribute, $value, $parameters, $validator) {
             return Hash::check($value, auth()->user()->password);
         });
 
-        /* Validate is true table column. Example: 'email'=>'is_true:user,activated' */
+        /* Rule: Validate is true table column. Example: 'email'=>'is_true:user,activated' */
         Validator::extend('is_true', function ($attribute, $value, $parameters, $validator){
             $user = DB::table($parameters[0])->where($attribute, $value)->where($parameters[1], true)->first();
             return($user && $user->$attribute === $value);
         });
-
-        Route::model('confirmation_token', ConfirmationToken::class);
     }
 
     /**

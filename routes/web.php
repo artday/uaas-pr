@@ -1,13 +1,5 @@
 <?php
 
-
-
-
-Route::get('/token', function (){
-    $token = auth()->user()->generateConfirmationToken();
-    dd($token);
-});
-
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
@@ -34,6 +26,12 @@ Route::group(['prefix'=>'account', 'middleware'=>['auth'], 'as'=>'account.'], fu
      */
     Route::get('password', 'Account\PasswordController@index')->name('password.index');
     Route::post('password', 'Account\PasswordController@store')->name('password.store');
+
+    /*
+     * Deactivate
+     */
+    Route::get('deactivate', 'Account\DeactivateController@index')->name('deactivate.index');
+    Route::post('deactivate', 'Account\DeactivateController@store')->name('deactivate.store');
 });
 
 Route::group(['prefix'=>'activation','middleware'=>['guest'], 'as'=>'activation.'], function(){

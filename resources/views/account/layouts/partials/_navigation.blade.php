@@ -10,6 +10,9 @@
             <li class="nav-item">
                 <a class="nav-link{{ active_if_on('account/password') }}" href="{{ route('account.password.index') }}">Change password</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link{{ active_if_on('account/deactivate') }}" href="{{ route('account.deactivate.index') }}">Deactivate Account</a>
+            </li>
         </ul>
     </div>
 </div>

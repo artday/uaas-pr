@@ -16,6 +16,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Account\PasswordUpdate' => [
             'App\Listeners\Account\SendPasswordUpdateEmail',
         ],
+        'App\Events\Account\Deactivate' => [
+            'App\Listeners\Account\Deactivate',
+        ],
         'App\Events\Auth\UserSignedUp' => [
             'App\Listeners\Auth\SendActivationEmail',
             'App\Listeners\Auth\ActivationLink',
@@ -27,6 +30,7 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Auth\ToggleActivationLink' => [
             'App\Listeners\Auth\ActivationLink',
         ],
+
     ];
 
     /**
