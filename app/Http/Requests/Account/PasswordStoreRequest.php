@@ -39,6 +39,8 @@ class PasswordStoreRequest extends FormRequest
     {
         return [
             'is_current_password' => 'Your current password is incorrect',
+            'password_current.required' => 'Current password is required',
+            'password.required' => 'New password is required',
         ];
     }
 }
